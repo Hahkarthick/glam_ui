@@ -1,0 +1,22 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Payments'" [icon]="'fa fa-credit-card-alt'"></app-page-header>
+    <div class="row col-md-12 text-capitalize text-center">
+        <p class="payment_message">
+            pick an option below every monthly subscription you will be charged $2.99 every month
+        </p>
+        <div class="col-md-12 payment_types">
+            <h3>Stripe Payment</h3>
+            <button class="btn btn-info">
+                $2.99
+            </button>
+        </div>
+        <div class="col-md-12 payment_types">
+            <h3>Enter payement information</h3>
+            <a [routerLink]="['/creditcard']">
+                <button class="btn btn-warning">
+                    Credit Card
+                </button>
+            </a>
+        </div>
+    </div>
+</div>

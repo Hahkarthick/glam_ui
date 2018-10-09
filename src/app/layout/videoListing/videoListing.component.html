@@ -1,0 +1,15 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Videos'"></app-page-header>
+    <div class="row blog_posts">
+        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let video of videos">
+            <a [routerLink]="['/video-listing']">
+                <div class="">
+                    <iframe [src]="video.video_source" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3>
+                    {{video_contents}}
+                </h3>
+            </a>
+        </div>
+    </div>
+</div>

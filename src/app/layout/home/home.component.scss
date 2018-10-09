@@ -1,0 +1,22 @@
+:host {
+  .row{
+    height: 100%;
+  }
+  .home-background div {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2em;
+    font-weight: 700;
+    height: 80px;
+    vertical-align: middle;
+    line-height: 3em;
+    text-transform: uppercase;
+    a{
+      color: #ffffff !important;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #d21f00;
+    }
+  }
+}

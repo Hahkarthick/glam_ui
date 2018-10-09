@@ -1,0 +1,21 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Events'"></app-page-header>
+    <div class="row event_posts">
+        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let event of events">
+            <a [routerLink]="['/eventListing']" routerLinkActive="router-link-active">
+                <div class="image">
+                    <img class="img-fluid" [src]="event.event_image" [alt]="event.image_alt">
+                    <div class="caption">
+                        <div class="event_count">{{event.event_count}}</div>
+                        <div class="event_title">{{event.event_title}}</div>
+                        <div class="event_po_date">{{event.event_po_date}}</div>
+                        <div class="event_icons">
+                            <span class="event_cmnt">{{event.event_cmnt_count}}</span>
+                            <span class="event_likes">{{event.event_likes_count}}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

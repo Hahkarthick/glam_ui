@@ -1,0 +1,49 @@
+.payment_message {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #444343;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.billing_info {
+  margin-top: 20px;
+}
+
+.row {
+  margin: 0px;
+  padding: 0px 5px;
+
+  .col {
+    padding: 0px;
+  }
+
+  .month {
+    padding-right: 2.5px;
+  }
+
+  .yr {
+    padding-right: 2.5px;
+  }
+
+  .card_mo_yr {
+    div,label {
+      padding: 0px;
+    }
+
+    span {
+      font-size: 25px;
+      padding: 0px;
+      text-align: center;
+    }
+
+  }
+}

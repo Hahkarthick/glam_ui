@@ -1,0 +1,89 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header>
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm- col- ">
+            <form novalidate #userForm="ngForm" (submit)="onSubmit()">
+                <div class="form-row">
+                        <div >
+                                <span>{{ errorMsg }}</span>
+                        </div> 
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="fName">First Name</label>
+                        <input type="text"
+                            [(ngModel)]="user.fname"
+                            class="form-control"
+                            #userFName="ngModel"
+                            placeholder="First name"
+                            name="fname" required>
+                        <div *ngIf="(userFName.errors?.required && userForm.submitted || userFName.errors?.required && userFName.touched)" class="alert alert-danger">
+                            First Name is Required
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="lName">Last Name</label>
+                        <input type="text"
+                            [(ngModel)]="user.lname"
+                            class="form-control"
+                            #userLName="ngModel"
+                            name="lname"
+                            placeholder="Last name" required>
+                        <div *ngIf="userLName.errors?.required && userForm.submitted || userLName.errors?.required && userLName.touched" class="alert alert-danger">
+                            Last Name is Required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                <div class="col">
+                    <label for="email">Password</label>
+                    <input type="password"
+                        class="form-control"
+                        [(ngModel)]="user.password"
+                        #userPassword="ngModel"
+                        name="password"
+                        placeholder="*******" required>
+                        <div *ngIf="userPassword.errors?.required && userForm.submitted ||userPassword.errors?.required && userPassword.touched" class="alert alert-danger">
+                            Password is Required
+                        </div>
+                </div>
+                <div class="col">
+                    <label for="email">Email address</label>
+                    <input type="email"
+                        class="form-control"
+                        [(ngModel)]="user.email"
+                        #userEmail="ngModel"
+                        name="email"
+                        placeholder="name@example.com" required>
+                        <div *ngIf="userEmail.errors?.required && userForm.submitted ||userEmail.errors?.required && userEmail.touched" class="alert alert-danger">
+                            Email is Required
+                        </div>
+                </div>
+                </div>
+                <div class="form-row">
+                <div class="col">
+                    <label for="mobile">Mobile No</label>
+                    <input type="text"
+                        class="form-control"
+                        [(ngModel)]="user.mobile"
+                        #userMobile="ngModel"
+                        name="mobile"
+                        placeholder="Mobile No" minlength="10" required>
+                        <div *ngIf="userMobile.errors?.required && userForm.submitted ||userMobile.errors?.required && userMobile.touched" class="alert alert-danger">
+                            Mobile Number is Required
+                        </div>
+                        <div *ngIf="userMobile.errors?.minlength && userMobile.touched" class="alert alert-danger">
+                            Enter a Valid Mobile Number
+                        </div>
+                </div>        
+                </div>
+                <div>
+                    <div class="form-row">
+                        <button type="submit" class="btn btn-primary">Sign up</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Payments'"></app-page-header>
+    <div class="row col-md-12 text-capitalize">
+        <div class="col-md-12 billing_info">
+            <h3 class="heading">Credit Card Info</h3>
+            <form novalidate #creditCard="ngForm">
+                <div>
+                    <span>{{ errorMsg }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" [(ngModel)]="card.name" #userFName="ngModel" class="form-control" id="name" aria-describedby="name"
+                        placeholder="Enter Name" name="name"required>
+                    <div *ngIf="(userFName.errors?.required && creditCard.submitted || userFName.errors?.required && userFName.touched)"
+                        class="alert alert-danger">
+                        First Name is Required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea [(ngModel)]="card.address" #address=ngModel class="form-control" id="address" rows="1" name="address" required></textarea>
+                    <div *ngIf="(address.errors?.required && creditCard.submitted || address.errors?.required && address.touched)"
+                        class="alert alert-danger">
+                        Address is Required
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col city">
+                        <label for="city">City</label>
+                        <input [(ngModel)]="card.city" type="text" #city=ngModel class="form-control" id="city" aria-describedby="city"
+                            placeholder="Enter City" name="city" required>
+                        <div *ngIf="(city.errors?.required && creditCard.submitted || city.errors?.required && city.touched)"
+                            class="alert alert-danger">
+                            city is Required
+                        </div>
+                    </div>
+                    <div class="col zip">
+                        <label for="zip">Zip Code</label>
+                        <input [(ngModel)]="card.zip" type="number" #zipCode=ngModel class="form-control" id="zip" aria-describedby="zip" name="zip"
+                            placeholder="Enter Zip Code" required>
+                        <div *ngIf="(zipCode.errors?.required && creditCard.submitted || zipCode.errors?.required && zipCode.touched)"
+                            class="alert alert-danger">
+                            ZipCode is Required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select [(ngModel)]="card.country" #country=ngModel class="form-control" name="country" required>
+                        <option>United States</option>
+                        <option>Canada</option>
+                        <option>Mexico</option>
+                        <option>France</option>
+                    </select>
+                    <div *ngIf="(country.errors?.required && creditCard.submitted || country.errors?.required && country.touched)"
+                        class="alert alert-danger">
+                        Country is Required
+                    </div>
+                </div>
+                <a [routerLink]="['/creditcardinfo']">
+                    <button type="button" class="btn btn-primary">
+                        Next
+                    </button>
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

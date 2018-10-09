@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+
+body {
+    height: 90vh;
+}
+
+footer {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    bottom: 0px;
+}
+.image{
+    position: relative;
+}
+
+.non-rigistered .image:after{
+    content: '\A';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .6);
+    opacity: 1
+}
+.non-rigistered .image:before {
+    position: absolute;
+    content: 'Unlock to view Content';
+    width:100%;
+    color:#fff;
+    z-index:1;
+    bottom:50%;
+    font-size:20px;
+    padding:4px 10px;
+    text-align:center;
+    background-color:red;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}

@@ -1,0 +1,15 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Events'"></app-page-header>
+    <div class="row blog_posts">
+        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let event of events">
+            <a [routerLink]="['/event-listing']">
+                <div class="">
+                    <iframe [src]="event.event_source" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3>
+                    {{event_contents}}
+                </h3>
+            </a>
+        </div>
+    </div>
+</div>
