@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationError, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-header',
@@ -11,8 +10,7 @@ import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class HeaderComponent implements OnInit {
     pushRightClass = 'push-right';
     closeResult: string;
-    constructor(private translate: TranslateService, public router: Router, public modalService: NgbModal,
-        ) {
+    constructor(private translate: TranslateService, public router: Router) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
@@ -47,12 +45,13 @@ export class HeaderComponent implements OnInit {
         // this.show = !this.show
         this.collapse = this.collapse === 'open' ? 'closed' : 'open';
     }
-    openVerticallyCentered(content) {
-        this.modalService.open(content, { size: 'lg' });
+    openModal() {
+        document.getElementById('myModal').style.display = 'block';
     }
-
+    modal_close() {
+        document.getElementById('myModal').style.display = 'none';
+    }
     ngOnInit() { }
-
 
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
