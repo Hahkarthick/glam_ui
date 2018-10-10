@@ -6,8 +6,11 @@ import { FormComponent } from './form.component';
 import { PageHeaderModule } from './../../shared';
 import { FormsModule} from '@angular/forms';
 
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
-    imports: [CommonModule, FormRoutingModule, PageHeaderModule, FormsModule],
+    imports: [CommonModule, FormRoutingModule, PageHeaderModule, FormsModule,
+        NgbModule.forRoot()],
     declarations: [FormComponent]
 })
 export class FormModule {}

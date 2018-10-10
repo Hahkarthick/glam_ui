@@ -9,6 +9,7 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'home' },
+            { path: 'login', loadChildren: './form/form.module#FormModule' },
             { path: 'home', loadChildren: './home/home.module#HomeModule' },
             { path: 'payments', loadChildren: './payment/payment.module#PaymentModule' },
             { path: 'creditcard', loadChildren: './credit-card/creditcard.module#CreditcardModule' },

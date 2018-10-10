@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit {
     collapse = 'closed';
 
     toggleCollapse() {
-        // this.show = !this.show
         this.collapse = this.collapse === 'open' ? 'closed' : 'open';
     }
     openModal() {
@@ -56,9 +55,6 @@ export class HeaderComponent implements OnInit {
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
     }
-    // close() {
-    //    this.modal.close();
-    // }
     changeLang(language: string) {
         this.translate.use(language);
     }

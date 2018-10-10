@@ -13,11 +13,7 @@ export class UserService {
   constructor(public http: Http) { }
 
   createUsers(user: User) {
-    // console.log(btoa('Leologesh07@'));
-    // user.password = btoa(user.password);
-   // console.log((user));
-    user.password = btoa(user.password);
-    return this.http.post('http://localhost/php_rest_api/index.php?action=insert_users', user)
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=insert_users', user)
       .map(res => res.json());
   }
 }
