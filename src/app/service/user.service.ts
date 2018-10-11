@@ -13,6 +13,7 @@ export class UserService {
   constructor(public http: Http) { }
 
   createUsers(user: User) {
+    console.log(user);
     return this.http.post('http://localhost/php_rest_api/glam.php?action=insert_users', user)
       .map(res => res.json());
   }
