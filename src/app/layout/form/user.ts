@@ -4,6 +4,7 @@ export class User {
     email: any;
     mobile: number;
     password: string;
+    cnfpassword: string;
     constructor() {
 
     }

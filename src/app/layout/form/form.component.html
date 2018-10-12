@@ -6,7 +6,7 @@
             <ngb-tabset>
                 <ngb-tab title="Login">
                     <ng-template ngbTabContent>
-                        <form novalidate #userForm="ngForm" (submit)="onSubmit()">
+                        <form novalidate #userForm="ngForm">
                             <div class="form-row">
                                 <div>
                                     <span>{{ errorMsg }}</span>
@@ -74,12 +74,13 @@
                         </form>
                     </ng-template>
                 </ngb-tab>
-                <ngb-tab title="Rigister">
+                <ngb-tab title="Register">
                     <ng-template ngbTabContent>
                         <form novalidate #userForm="ngForm">
                             <div class="form-row">
                                 <div>
-                                    <span>{{ errorMsg }}</span>
+                                    <p id="error" class="text-center">{{ errorMsg }}</p>
+                                    <p id="success" class="text-center">{{ successMsg }}</p>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -87,39 +88,51 @@
                                     <label for="fName">First Name</label>
                                     <input type="text" [(ngModel)]="user.fname" class="form-control" #userFName="ngModel"
                                         placeholder="First name" name="fname" required>
-                                    <div *ngIf="(userFName.errors?.required && userForm.submitted || userFName.errors?.required && userFName.touched)"
+                                    <small *ngIf="(userFName.errors?.required && userForm.submitted || userFName.errors?.required && userFName.touched)"
                                         class="alert alert-danger">
                                         First Name is Required
-                                    </div>
+                                    </small>
                                 </div>
                                 <div class="col">
                                     <label for="lName">Last Name</label>
                                     <input type="text" [(ngModel)]="user.lname" class="form-control" #userLName="ngModel"
                                         name="lname" placeholder="Last name" required>
-                                    <div *ngIf="userLName.errors?.required && userForm.submitted || userLName.errors?.required && userLName.touched"
+                                    <small *ngIf="userLName.errors?.required && userForm.submitted || userLName.errors?.required && userLName.touched"
                                         class="alert alert-danger">
                                         Last Name is Required
-                                    </div>
+                                    </small>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="email">Password</label>
+                                    <label for="password">Password</label>
                                     <input type="password" class="form-control" [(ngModel)]="user.password"
-                                        #userPassword="ngModel" name="password" placeholder="*******" required>
-                                    <div *ngIf="userPassword.errors?.required && userForm.submitted ||userPassword.errors?.required && userPassword.touched"
+                                        #userPassword="ngModel" name="password" 
+                                        placeholder="*******" required>
+                                    <small *ngIf="userPassword.errors?.required && userForm.submitted ||userPassword.errors?.required && userPassword.touched"
                                         class="alert alert-danger">
                                         Password is Required
-                                    </div>
+                                    </small>
                                 </div>
+                                <div class="col">
+                                    <label for="cnfpassword">Confirm Password</label>
+                                    <input type="password" class="form-control" [(ngModel)]="user.cnfpassword"
+                                        #userPassword="ngModel" name="cnfpassword" placeholder="*******" required>
+                                    <small *ngIf="userPassword.errors?.required && userForm.submitted ||userPassword.errors?.required && userPassword.touched"
+                                        class="alert alert-danger">
+                                        Password is Required
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="col">
                                     <label for="email">Email address</label>
                                     <input type="email" class="form-control" [(ngModel)]="user.email" #userEmail="ngModel"
                                         name="email" placeholder="name@example.com" required>
-                                    <div *ngIf="userEmail.errors?.required && userForm.submitted ||userEmail.errors?.required && userEmail.touched"
+                                    <small *ngIf="userEmail.errors?.required && userForm.submitted ||userEmail.errors?.required && userEmail.touched"
                                         class="alert alert-danger">
                                         Email is Required
-                                    </div>
+                                    </small>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -131,14 +144,14 @@
                                         class="alert alert-danger">
                                         Mobile Number is Required
                                     </div>
-                                    <div *ngIf="userMobile.errors?.minlength && userMobile.touched" class="alert alert-danger">
+                                    <small *ngIf="userMobile.errors?.minlength && userMobile.touched" class="alert alert-danger">
                                         Enter a Valid Mobile Number
-                                    </div>
+                                    </small>
                                 </div>
                             </div>
                             <div>
                                 <div class="form-row">
-                                    <button type="submit" class="btn btn-primary">Sign up</button>
+                                    <button type="button" (submit)="onSubmit()" class="btn btn-primary">Sign up</button>
                                 </div>
                             </div>
                         </form>
