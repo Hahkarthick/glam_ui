@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-import { Form } from '../form/form';
+import { Login } from './login';
 
 import { UserService } from '../../service/user.service';
 import { User } from '../form/user';
@@ -13,16 +13,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     animations: [routerTransition()]
 })
 export class FormComponent implements OnInit {
-
-    errorMsg: string;
-    successMsg: string;
+    errorMsg: String;
+    successMsg: String;
     user = new User();
     onSubmit(): void {
         /*         const form = new FormGroup({
                     password: new FormControl('', Validators.minLength(5)),
                     cnfpassword: new FormControl('', Validators.minLength(5)),
                   }, passwordMatchValidator);
-        
                   function passwordMatchValidator(g: FormGroup) {
                       console.log(g.get('password'));
                      return g.get('password').value === g.get('cnfpassword').value
@@ -32,31 +30,28 @@ export class FormComponent implements OnInit {
         const successMsg = document.getElementById('success');
         const pass = this.user.password;
         const cnfpass = this.user.cnfpassword;
-        console.log(pass.length);
-        if (pass.length < 5) {
-            if (pass === cnfpass) {
-                success();
+        if (pass === cnfpass) {
+            if (pass.length > 5) {
+                this.services.createUsers(this.user)
+                    .subscribe(user => {
+                        successMsg.textContent = 'User Created!!';
+                        successMsg.classList.add('success', 'alert-success');
+                        successMsg.scrollIntoView(true);
+                    });
             } else {
-                error('Password Mismatch');
+                error('Password Must Minimum 6 characters');
             }
         } else {
-            error('Password Must Minimum 6 characters');
+            error('Password Mismatch');
         }
         function error(message) {
-            this.errorMsg = message;
-            errorMsg.classList.add('alert alert-danger');
-        }
-        function success() {
-            this.services.createUsers(this.user)
-                .subscribe(user => {
-                    this.successMsg = 'User Created!!';
-                });
+            errorMsg.textContent = message;
+            errorMsg.classList.add('alert', 'alert-danger');
+            errorMsg.scrollIntoView(true);
         }
 
     }
-    constructor(public services: UserService) {
-
-    }
+    constructor(public services: UserService) {  }
     ngOnInit() { }
 }
 

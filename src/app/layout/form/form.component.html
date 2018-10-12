@@ -6,10 +6,49 @@
             <ngb-tabset>
                 <ngb-tab title="Login">
                     <ng-template ngbTabContent>
-                        <form novalidate #userForm="ngForm">
+                        <form novalidate #loginForm="ngForm">
                             <div class="form-row">
-                                <div>
-                                    <span>{{ errorMsg }}</span>
+                                <div class="col-md-12 text-center">
+                                    <p id="error" class=" col-md-12 text-center">{{ loginErrorMsg }}</p>                                    
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="loginfName">Email</label>
+                                    <input type="text" [(ngModel)]="login.email" class="form-control" #loginFName="ngModel"
+                                        placeholder="First name" name="fname" required>
+                                        <div *ngIf="(loginEmail.errors?.required && loginForm.submitted || loginEmail.errors?.required && loginEmail.touched)"
+                                        class="alert alert-danger">
+                                        First Name is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="email">Password</label>
+                                    <input type="password" class="form-control" [(ngModel)]="user.password"
+                                        #userPassword="ngModel" name="password" placeholder="*******" required>
+                                        <div *ngIf="(loginPassword.errors?.required && loginForm.submitted ||loginPassword.errors?.required && loginPassword.touched)"
+                                        class="alert alert-danger">
+                                        Password is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-row">
+                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                </div>
+                            </div>
+                        </form>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Register">
+                    <ng-template ngbTabContent>
+                        <form novalidate #userForm="ngForm" (ngSubmit)="onSubmit()">
+                            <div class="form-row">
+                                <div class="col-md-12 text-center">
+                                    <p id="error" class=" col-md-12 text-center">{{ errorMsg }}</p>
+                                    <p id="success" class=" col-md-12 text-center">{{ successMsg }}</p>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -34,14 +73,26 @@
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="email">Password</label>
+                                    <label for="password">Password</label>
                                     <input type="password" class="form-control" [(ngModel)]="user.password"
-                                        #userPassword="ngModel" name="password" placeholder="*******" required>
+                                        #userPassword="ngModel" name="password" 
+                                        placeholder="*******" required>
                                     <div *ngIf="userPassword.errors?.required && userForm.submitted ||userPassword.errors?.required && userPassword.touched"
                                         class="alert alert-danger">
                                         Password is Required
                                     </div>
                                 </div>
+                                <div class="col">
+                                    <label for="cnfpassword">Confirm Password</label>
+                                    <input type="password" class="form-control" [(ngModel)]="user.cnfpassword"
+                                        #userPassword="ngModel" name="cnfpassword" placeholder="*******" required>
+                                    <div *ngIf="userPassword.errors?.required && userForm.submitted ||userPassword.errors?.required && userPassword.touched"
+                                        class="alert alert-danger">
+                                        Password is Required
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="col">
                                     <label for="email">Email address</label>
                                     <input type="email" class="form-control" [(ngModel)]="user.email" #userEmail="ngModel"
@@ -68,90 +119,7 @@
                             </div>
                             <div>
                                 <div class="form-row">
-                                    <button type="submit" class="btn btn-primary">Sign up</button>
-                                </div>
-                            </div>
-                        </form>
-                    </ng-template>
-                </ngb-tab>
-                <ngb-tab title="Register">
-                    <ng-template ngbTabContent>
-                        <form novalidate #userForm="ngForm">
-                            <div class="form-row">
-                                <div>
-                                    <p id="error" class="text-center">{{ errorMsg }}</p>
-                                    <p id="success" class="text-center">{{ successMsg }}</p>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <label for="fName">First Name</label>
-                                    <input type="text" [(ngModel)]="user.fname" class="form-control" #userFName="ngModel"
-                                        placeholder="First name" name="fname" required>
-                                    <small *ngIf="(userFName.errors?.required && userForm.submitted || userFName.errors?.required && userFName.touched)"
-                                        class="alert alert-danger">
-                                        First Name is Required
-                                    </small>
-                                </div>
-                                <div class="col">
-                                    <label for="lName">Last Name</label>
-                                    <input type="text" [(ngModel)]="user.lname" class="form-control" #userLName="ngModel"
-                                        name="lname" placeholder="Last name" required>
-                                    <small *ngIf="userLName.errors?.required && userForm.submitted || userLName.errors?.required && userLName.touched"
-                                        class="alert alert-danger">
-                                        Last Name is Required
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" [(ngModel)]="user.password"
-                                        #userPassword="ngModel" name="password" 
-                                        placeholder="*******" required>
-                                    <small *ngIf="userPassword.errors?.required && userForm.submitted ||userPassword.errors?.required && userPassword.touched"
-                                        class="alert alert-danger">
-                                        Password is Required
-                                    </small>
-                                </div>
-                                <div class="col">
-                                    <label for="cnfpassword">Confirm Password</label>
-                                    <input type="password" class="form-control" [(ngModel)]="user.cnfpassword"
-                                        #userPassword="ngModel" name="cnfpassword" placeholder="*******" required>
-                                    <small *ngIf="userPassword.errors?.required && userForm.submitted ||userPassword.errors?.required && userPassword.touched"
-                                        class="alert alert-danger">
-                                        Password is Required
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <label for="email">Email address</label>
-                                    <input type="email" class="form-control" [(ngModel)]="user.email" #userEmail="ngModel"
-                                        name="email" placeholder="name@example.com" required>
-                                    <small *ngIf="userEmail.errors?.required && userForm.submitted ||userEmail.errors?.required && userEmail.touched"
-                                        class="alert alert-danger">
-                                        Email is Required
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <label for="mobile">Mobile No</label>
-                                    <input type="text" class="form-control" [(ngModel)]="user.mobile" #userMobile="ngModel"
-                                        name="mobile" placeholder="Mobile No" minlength="10" required>
-                                    <div *ngIf="userMobile.errors?.required && userForm.submitted ||userMobile.errors?.required && userMobile.touched"
-                                        class="alert alert-danger">
-                                        Mobile Number is Required
-                                    </div>
-                                    <small *ngIf="userMobile.errors?.minlength && userMobile.touched" class="alert alert-danger">
-                                        Enter a Valid Mobile Number
-                                    </small>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="form-row">
-                                    <button type="button" (submit)="onSubmit()" class="btn btn-primary">Sign up</button>
+                                    <button (click)="onSubmit()" class="btn btn-primary">Sign up</button>
                                 </div>
                             </div>
                         </form>
