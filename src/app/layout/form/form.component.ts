@@ -16,6 +16,7 @@ export class FormComponent implements OnInit {
     errorMsg: String;
     successMsg: String;
     user = new User();
+    login = new Login();
     onSubmit(): void {
         /*         const form = new FormGroup({
                     password: new FormControl('', Validators.minLength(5)),
@@ -50,6 +51,13 @@ export class FormComponent implements OnInit {
             errorMsg.scrollIntoView(true);
         }
 
+    }
+
+    onLogin(): void {
+        this.services.verifyUser(this.login)
+        .subscribe(login => {
+            window.location.href = '/';
+        });
     }
     constructor(public services: UserService) {  }
     ngOnInit() { }

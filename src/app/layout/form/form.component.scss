@@ -1,0 +1,21 @@
+.row {
+    margin-top: 15px;
+    button{
+        margin-top: 15px;
+    }
+    .nav-tabs {
+        .nav-item {
+            width: 50%;
+
+            .nav-link.active {
+                border-color: #d2381e #d2381e #fff;
+                border-width: medium;
+            }
+
+            .nav-item {
+                border-color: #d2381e;
+                border-width: medium;
+            }
+        }
+    }
+}

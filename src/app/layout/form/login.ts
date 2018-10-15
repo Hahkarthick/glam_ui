@@ -1,5 +1,5 @@
 export class Login {
     constructor() { }
-    protected email: any;
+    email: any;
     password: any;
 }
