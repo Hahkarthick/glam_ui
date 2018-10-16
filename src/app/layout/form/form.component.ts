@@ -36,8 +36,11 @@ export class FormComponent implements OnInit {
                 this.services.createUsers(this.user)
                     .subscribe(user => {
                         successMsg.textContent = 'User Created!!';
+                        window.scrollTo(0, 0);
                         successMsg.classList.add('success', 'alert-success');
-                        successMsg.scrollIntoView(true);
+                        window.setTimeout(function () {
+                            window.location.href = '/login';
+                        }, 3000);
                     });
             } else {
                 error('Password Must Minimum 6 characters');
@@ -47,19 +50,60 @@ export class FormComponent implements OnInit {
         }
         function error(message) {
             errorMsg.textContent = message;
+            window.scrollTo(0, 0);
             errorMsg.classList.add('alert', 'alert-danger');
-            errorMsg.scrollIntoView(true);
         }
 
     }
 
     onLogin(): void {
         this.services.verifyUser(this.login)
-        .subscribe(login => {
-            window.location.href = '/';
-        });
+            .subscribe(login => {
+                function dateAdd(dates, interval, units) {
+                    let ret = new Date(dates); // don't change original date
+                    const checkRollover = function () { if (ret.getDate() !== dates.getDate()) { ret.setDate(0); } };
+                    switch (interval.toLowerCase()) {
+                        case 'year': ret.setFullYear(ret.getFullYear() + units); checkRollover(); break;
+                        case 'quarter': ret.setMonth(ret.getMonth() + 3 * units); checkRollover(); break;
+                        case 'month': ret.setMonth(ret.getMonth() + units); checkRollover(); break;
+                        case 'week': ret.setDate(ret.getDate() + 7 * units); break;
+                        case 'day': ret.setDate(ret.getDate() + units); break;
+                        case 'hour': ret.setTime(ret.getTime() + units * 3600000); break;
+                        case 'minute': ret.setTime(ret.getTime() + units * 60000); break;
+                        case 'second': ret.setTime(ret.getTime() + units * 1000); break;
+                        default: ret = undefined; break;
+                    }
+                    return ret;
+                }
+                const date = new Date();
+                const expTime = dateAdd(date, 'hour', 1);
+                /*
+                * Samples
+                    out('start:      ' + date);
+                    out('+1 year:    ' + dateAdd(date, 'YEAR', 1));
+                    out('+1 quarter: ' + dateAdd(date, 'QUARTER', 1));
+                    out('+1 month:   ' + dateAdd(date, 'MONTH', 1));
+                    out('+1 week:    ' + dateAdd(date, 'week', 1));
+                    out('+1 day:     ' + dateAdd(date, 'day', 1));
+                    out('+1 hour:    ' + dateAdd(date, 'hour', 1));
+                    out('+1 minute:  ' + dateAdd(date, 'minute', 1));
+                    out('+1 second:  ' + dateAdd(date, 'second', 1));
+                    out('+1 garbage: ' + dateAdd(date, 'garbage', 1));
+                *
+                */
+
+                /*
+                    if (document.cookie.replace(/(?:(?:^|.*;\s*)doSomethingOnlyOnce\s*\=\s*([^;]*).*$)|^.*$/, "$1") == "true") {
+                        alert("Do something here!");
+                    }
+                */
+
+                console.log(login);
+                document.cookie = 'user=true; expires=' + expTime + '; path=/; HttpOnly=true';
+                window.location.href = '/';
+            });
     }
-    constructor(public services: UserService) {  }
+    constructor(public services: UserService) { }
     ngOnInit() { }
 }
 

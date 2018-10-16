@@ -9,7 +9,8 @@
                         <form novalidate #loginForm="ngForm">
                             <div class="form-row">
                                 <div class="col-md-12 text-center">
-                                    <p id="error" class=" col-md-12 text-center">{{ loginErrorMsg }}</p>                                    
+                                    <p id="lsuccess" class=" col-md-12 text-center">{{ loginSuccessMsg }}</p>
+                                    <p id="lerror" class=" col-md-12 text-center">{{ loginErrorMsg }}</p>                                    
                                 </div>
                             </div>
                             <div class="form-row">
@@ -37,7 +38,7 @@
                             <div>
                                 <div class="form-row">
                                     <div class="col col-md-12">
-                                        <button type="submit" class="btn btn-primary col-md-12">Sign in</button>
+                                        <button (click)="onLogin()" type="button" class="btn btn-primary col-md-12">Sign in</button>
                                     </div>
                                 </div>
                             </div>
@@ -46,8 +47,8 @@
                 </ngb-tab>
                 <ngb-tab title="Register">
                     <ng-template ngbTabContent>
-                        <form novalidate #userForm="ngForm" (ngSubmit)="onSubmit()">
-                            <div class="form-row">
+                        <form novalidate #userForm="ngForm">
+                            <div id='mesgs' class="form-row">
                                 <div class="col-md-12 text-center">
                                     <p id="error" class=" col-md-12 text-center">{{ errorMsg }}</p>
                                     <p id="success" class=" col-md-12 text-center">{{ successMsg }}</p>

@@ -12,7 +12,9 @@ export class BlogComponent implements OnInit, AfterViewInit {
     protected blogs: Array<any> = [];
 
     constructor(private renderer: Renderer2) {
-        this.blogs.push(
+    
+    /*
+       this.blogs.push(
             {
                 blog_image: '../../../assets/images/blog_1.png',
                 image_alt: 'blog_1_image',
@@ -68,6 +70,7 @@ export class BlogComponent implements OnInit, AfterViewInit {
                 blog_likes_count: '50'
             }
         );
+    */
     }
 
 
@@ -75,14 +78,15 @@ export class BlogComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         this.renderer.setStyle(document.body, 'background', 'none');
     }
-    /*     public isAuthenticated(): boolean {
+    /*  public isAuthenticated(): boolean {
             // get the token
             const token = this.getToken();
             // return a boolean reflecting
             // whether or not the token is expired
             // return tokenNotExpired(null, token);
             return true;
-        } */
+        }
+    */
 
     ngOnInit() { }
 }
