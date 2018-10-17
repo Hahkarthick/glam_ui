@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ListingService } from '../../service/listing.service';
 
 @Component({
     selector: 'app-news',
@@ -8,13 +9,17 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class NewsComponent implements OnInit, AfterViewInit {
-    constructor(private renderer: Renderer2) { }
 
+    protected news: Array<any> = [];
+
+    constructor(private renderer: Renderer2, private listing: ListingService) { 
+        this.listing.listNews().subscribe(news => {
+            this.news.push(news);
+        });
+    }
 
     ngAfterViewInit() {
         this.renderer.setStyle(document.body, 'background', 'none');
-
-
     }
     /*     public isAuthenticated(): boolean {
             // get the token

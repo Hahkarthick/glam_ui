@@ -14,5 +14,21 @@ export class ListingService {
     return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
       .map(res => res.json());
   }
+  listEvents() {
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
+      .map(res => res.json());
+  }
+  listVideos() {
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
+      .map(res => res.json());
+  }
+  listGallery() {
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
+      .map(res => res.json());
+  }
+  listNews() {
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
+      .map(res => res.json());
+  }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ListingService } from '../../service/listing.service';
 
 @Component({
     selector: 'app-event',
@@ -11,8 +12,11 @@ export class EventComponent implements OnInit, AfterViewInit {
 
     protected events: Array<any> = [];
 
-    constructor(private renderer: Renderer2) {
-        this.events.push(
+    constructor(private renderer: Renderer2, private listing: ListingService) {
+        this.listing.listEvents().subscribe(blogs => {
+            this.events.push(blogs);
+        });
+/*         this.events.push(
             {
                 event_image: '../../../assets/images/blog_1.png',
                 image_alt: 'event_1_image',
@@ -67,7 +71,7 @@ export class EventComponent implements OnInit, AfterViewInit {
                 event_cmnt_count: '20',
                 event_likes_count: '50'
             }
-        );
+        ); */
     }
 
 

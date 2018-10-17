@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ListingService } from '../../service/listing.service';
 
 @Component({
     selector: 'app-video',
@@ -12,8 +13,11 @@ export class VideoComponent implements OnInit, AfterViewInit {
 
     protected videos: Array<any> = [];
 
-    constructor(private renderer: Renderer2, private sanitizer: DomSanitizer) {
-        this.videos.push(
+    constructor(private renderer: Renderer2, private sanitizer: DomSanitizer, private listing: ListingService) {
+        this.listing.listVideos().subscribe(videos => {
+            this.videos.push(videos);
+        });
+/*         this.videos.push(
             {
                 video_source: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/CvP92martxs')
             },
@@ -32,7 +36,7 @@ export class VideoComponent implements OnInit, AfterViewInit {
             {
                 video_source: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/SVezgWk9Tow')
             }
-        );
+        ); */
     }
 
 
