@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewInit, ElementRef, Renderer2 } from '@angula
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { routerTransition } from '../../router.animations';
 
-import { OrderServiceService } from '../../service/order-service.service';
 
 @Component({
     selector: 'app-dashboard',

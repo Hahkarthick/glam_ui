@@ -4,14 +4,14 @@
         <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let blog of blogs">
             <a [routerLink]="['/blogListing']" routerLinkActive="router-link-active">
                 <div class="image">
-                    <img class="img-fluid" [src]="blog.blog_image" [alt]="blog.image_alt">
+                    <img class="img-fluid" [src]="blog.photo" [alt]="blog.image_alt">
                     <div class="caption">
-                        <div class="blog_count">{{blog.blog_count}}</div>
-                        <div class="blog_title">{{blog.blog_title}}</div>
-                        <div class="blog_po_date">{{blog.blog_po_date}}</div>
+                        <!-- <div class="blog_count">{{blog.blog_count}}</div> -->
+                        <div class="blog_title">{{blog.title}}</div>
+                        <div class="blog_po_date">{{blog.time}}</div>
                         <div class="blog_icons">
-                            <span class="blog_cmnt">{{blog.blog_cmnt_count}}</span>
-                            <span class="blog_likes">{{blog.blog_likes_count}}</span>
+                            <!-- <span class="blog_cmnt">{{blog.blog_cmnt_count}}</span> -->
+                            <span class="blog_likes">{{blog.likes}}</span>
                         </div>
                     </div>
                 </div>

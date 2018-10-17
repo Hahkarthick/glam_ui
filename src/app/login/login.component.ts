@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
 
 import { Login } from '../login/login';
-import { LoginService } from '../service/login.service';
 
 @Component({
     selector: 'app-login',
@@ -15,7 +14,7 @@ export class LoginComponent implements OnInit {
      login = new Login();
      errorMsg: any[];
 
-    onLoggedin() {
+/*     onLoggedin() {
         // Check the login details
         this.logindetails.validateadmin(this.login)
             .subscribe(login => {
@@ -28,9 +27,8 @@ export class LoginComponent implements OnInit {
                     console.log(this.errorMsg);
             }
          });
-    }
+    } */
     constructor(
-        public logindetails: LoginService,
         private router: Router
     ) {}
 

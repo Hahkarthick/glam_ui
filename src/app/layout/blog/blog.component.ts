@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ListingService } from '../../service/listing.service';
 
 @Component({
     selector: 'app-blog',
@@ -11,8 +12,12 @@ export class BlogComponent implements OnInit, AfterViewInit {
 
     protected blogs: Array<any> = [];
 
-    constructor(private renderer: Renderer2) {
-    
+    constructor(private renderer: Renderer2, private listing: ListingService ) {
+
+    this.listing.listBlog().subscribe(blogs => {
+        this.blogs = blogs;
+        console.log(blogs);
+    });
     /*
        this.blogs.push(
             {
