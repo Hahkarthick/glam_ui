@@ -15,7 +15,7 @@ export class BlogComponent implements OnInit, AfterViewInit {
     constructor(private renderer: Renderer2, private listing: ListingService ) {
 
     this.listing.listBlog().subscribe(blogs => {
-        this.blogs = blogs;
+        this.blogs.push(blogs);
         console.log(blogs);
     });
     /*
