@@ -4,7 +4,7 @@
         <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let video of videos">
             <a [routerLink]="['/videoListing']">
                 <div class="image">
-                    <iframe [src]="video.video_source" frameborder="0" allowfullscreen></iframe>
+                    <iframe [src]="video.source" frameborder="0" allowfullscreen></iframe>
                 </div>
             </a>
         </div>
