@@ -12,8 +12,9 @@ export class NewsComponent implements OnInit, AfterViewInit {
 
     protected news: Array<any> = [];
 
-    constructor(private renderer: Renderer2, private listing: ListingService) { 
+    constructor(private renderer: Renderer2, private listing: ListingService) {
         this.listing.listNews().subscribe(news => {
+            console.log(news);
             this.news.push(news);
         });
     }

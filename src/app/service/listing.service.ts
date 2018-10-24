@@ -15,19 +15,19 @@ export class ListingService {
       .map(res => res.json());
   }
   listEvents() {
-    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_events', this.token)
       .map(res => res.json());
   }
   listVideos() {
-    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_videos', this.token)
       .map(res => res.json());
   }
   listGallery() {
-    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_gallery', this.token)
       .map(res => res.json());
   }
   listNews() {
-    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_blog', this.token)
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=list_news', this.token)
       .map(res => res.json());
   }
 
