@@ -19,9 +19,7 @@ export class NewsComponent implements OnInit, AfterViewInit {
         });
     }
 
-    ngAfterViewInit() {
-        this.renderer.setStyle(document.body, 'background', 'none');
-    }
+    ngAfterViewInit() { }
     /*     public isAuthenticated(): boolean {
             // get the token
             const token = this.getToken();
@@ -36,5 +34,7 @@ export class NewsComponent implements OnInit, AfterViewInit {
         return result;
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.renderer.setStyle(document.body, 'background', 'none');
+    }
 }

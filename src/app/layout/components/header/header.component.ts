@@ -53,8 +53,22 @@ export class HeaderComponent implements OnInit {
     ngOnInit() { }
 
     onLoggedout() {
-        localStorage.removeItem('isLoggedin');
+        // localStorage.removeItem('isLoggedin');
+        const userCookies = document.cookie.match(/user[^;]+/);
+        const value = userCookies[0].split('=');
+        deleteCookie(value[0]);
+
+        function deleteCookie(cookiename) {
+            const d = new Date();
+            d.setDate(d.getDate() - 1);
+            const expires = ';expires=' + d;
+            const name = cookiename;
+            const value = '';
+            document.cookie = name + '=' + value + expires + ';';
+            window.location.href = '/';
+        }
     }
+
     changeLang(language: string) {
         this.translate.use(language);
     }

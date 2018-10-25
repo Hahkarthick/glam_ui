@@ -10,18 +10,26 @@ export class AppComponent implements OnInit, AfterViewInit {
     constructor(private renderer: Renderer2) {
     }
 
-    ngAfterViewInit() {
-        if (this.isLoggedIn()) {
-            document.querySelector('body').classList.remove('non-rigistered');
-        } else {
-            document.querySelector('body').classList.add('non-rigistered');
-        }
-    }
+    ngAfterViewInit() { }
+
     private isLoggedIn(): boolean {
-        const result = !!(localStorage.getItem('isLoggedin'));
-        console.log(result);
-        return result;
+        const userCookies = document.cookie.match(/user[^;]+/);
+        if (userCookies) {
+            const value = userCookies[0].split('=');
+            if (value[1] === 'true') {
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
     ngOnInit() {
+        if (this.isLoggedIn()) {
+            console.log('loggedin');
+            document.querySelector('body').classList.remove('non-rigistered');
+        } else {
+            console.log('Not Loggedin');
+            document.querySelector('body').classList.add('non-rigistered');
+        }
     }
 }
