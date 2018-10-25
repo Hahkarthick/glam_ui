@@ -31,4 +31,9 @@ export class ListingService {
       .map(res => res.json());
   }
 
+  blogDescription(id) {
+    return this.http.post('http://localhost/php_rest_api/glam.php?action=blogDescription&id={id}', this.token)
+    .map(res => res.json());
+  }
+
 }
