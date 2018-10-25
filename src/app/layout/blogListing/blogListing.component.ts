@@ -21,6 +21,7 @@ export class BlogListingComponent implements OnInit, AfterViewInit {
         private router: Router) {
 
         const id = +this.route.snapshot.params['id'];
+        console.log(id);
         /*
             this.blogs.push(
             {

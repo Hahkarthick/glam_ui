@@ -10,12 +10,13 @@ import { ListingService } from '../../service/listing.service';
 })
 export class BlogComponent implements OnInit, AfterViewInit {
 
-    protected blogs: Array<any> = [];
+    protected blogs;
 
     constructor(private renderer: Renderer2, private listing: ListingService) {
 
         this.listing.listBlog().subscribe(blogs => {
-            this.blogs.push(blogs);
+            console.log(blogs[0].id);
+            this.blogs = blogs;
         });
 
     }
