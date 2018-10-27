@@ -11,7 +11,7 @@ import { ListingService } from '../../service/listing.service';
 })
 export class BlogListingComponent implements OnInit, AfterViewInit {
 
-    protected blogs: Array<any> = [];
+    protected blogs: Array<any> = [];;
 
     constructor(
         private renderer: Renderer2,
@@ -21,10 +21,9 @@ export class BlogListingComponent implements OnInit, AfterViewInit {
         private router: Router) {
 
         const id = +this.route.snapshot.params['id'];
-        console.log(id);
         this.listing.blogDescription(id).subscribe(blogs => {
-            console.log(blogs[0].id);
-            this.blogs = blogs;
+            console.log(blogs);
+            this.blogs.push(blogs);
         });
         /*
             this.blogs.push(

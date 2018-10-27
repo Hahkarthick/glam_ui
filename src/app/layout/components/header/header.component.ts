@@ -37,10 +37,20 @@ export class HeaderComponent implements OnInit {
             }
         });
 
-
     }
     collapse = 'closed';
 
+    isLoggedIn(): boolean {
+        const userCookies = document.cookie.match(/user[^;]+/);
+        if (userCookies) {
+            const value = userCookies[0].split('=');
+            if (value[1] === 'true') {
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
     toggleCollapse() {
         this.collapse = this.collapse === 'open' ? 'closed' : 'open';
     }

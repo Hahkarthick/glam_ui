@@ -5,7 +5,7 @@
             <a [routerLink]="['/blogListing/'+blog.id]" routerLinkActive="router-link-active">
                 <div class="image">
                     <!-- <img class="img-fluid" [src]="blog.photo" [alt]="blog.image_alt"> -->
-                    <img class="img-fluid img-responsive" src="https://picsum.photos/500/500/?random" [alt]="blog.title">
+                    <img class="img-fluid img-responsive" src="assets/images/blog/{{blog.photo}}" [alt]="blog.title">
                     <div class="caption">
                         <!-- <div class="blog_count">{{blog.blog_count}}</div> -->
                         <div class="content_title blog_title">{{blog.title}}</div>

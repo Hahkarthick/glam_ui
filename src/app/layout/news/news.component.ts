@@ -10,12 +10,12 @@ import { ListingService } from '../../service/listing.service';
 })
 export class NewsComponent implements OnInit, AfterViewInit {
 
-    protected news: Array<any> = [];
+    protected news;
 
     constructor(private renderer: Renderer2, private listing: ListingService) {
         this.listing.listNews().subscribe(news => {
             console.log(news);
-            this.news.push(news);
+            this.news = news;
         });
     }
 

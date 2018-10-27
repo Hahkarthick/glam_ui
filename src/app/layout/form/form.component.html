@@ -16,8 +16,8 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="loginfName">Email</label>
-                                    <input type="text" [(ngModel)]="login.email" class="form-control" #loginEmail="ngModel"
-                                        placeholder="E-mail" name="loginEmail" required>
+                                    <input type="email" [(ngModel)]="login.email" class="form-control" #loginEmail="ngModel"
+                                    placeholder="name@example.com" name="loginEmail" required>
                                         <div *ngIf="(loginEmail.errors?.required && loginForm.submitted || loginEmail.errors?.required && loginEmail.touched)"
                                         class="alert alert-danger">
                                         Email is Required

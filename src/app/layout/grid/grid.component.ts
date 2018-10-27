@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { ListingService } from '../../service/listing.service';
 
 @Component({
     selector: 'app-grid',
@@ -8,8 +9,17 @@ import { routerTransition } from '../../router.animations';
     animations: [routerTransition()]
 })
 export class GridComponent implements OnInit, AfterViewInit {
-    constructor(private renderer: Renderer2) { }
-    images = [
+    protected gallery;
+    constructor(private renderer: Renderer2, private listing: ListingService) {
+
+        this.listing.listGallery().subscribe(gallery => {
+            console.log(gallery[0].id);
+            this.gallery = gallery;
+        });
+     }
+
+
+    /* images = [
         {
             img: 'https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg',
             thumb: 'https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg', description: 'Image 1'
@@ -46,7 +56,7 @@ export class GridComponent implements OnInit, AfterViewInit {
             img: 'https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg',
             thumb: 'https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg', description: 'Image 9'
         }
-    ];
+    ]; */
     ngAfterViewInit() {
         this.renderer.setStyle(document.body, 'background', 'none');
     }

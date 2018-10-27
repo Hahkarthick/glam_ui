@@ -4,23 +4,22 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ListingService } from '../../service/listing.service';
 @Component({
-    selector: 'app-videolisting',
-    templateUrl: './videoListing.component.html',
-    styleUrls: ['./videoListing.component.scss'],
+    selector: 'app-newslisting',
+    templateUrl: './newsListing.component.html',
+    styleUrls: ['./newsListing.component.scss'],
     animations: [routerTransition()]
 })
-export class VideoListingComponent implements OnInit, AfterViewInit {
+export class NewsListingComponent implements OnInit, AfterViewInit {
 
-    protected videos: Array<any> = [];
+    protected news: Array<any> = [];
 
     constructor(private renderer: Renderer2, private route: ActivatedRoute,
-         private sanitizer: DomSanitizer, private listing: ListingService, private router: Router) {
-        const id = +this.route.snapshot.params['id'];
-        this.listing.videoDescription(id).subscribe(video => {
-            console.log(video);
-            this.videos.push(video);
-        });
-
+        private listing: ListingService,  private sanitizer: DomSanitizer, private router: Router) {
+       const id = +this.route.snapshot.params['id'];
+       this.listing.newsDescription(id).subscribe(news => {
+           console.log(news);
+           this.news.push(news);
+       });
     }
 
     ngAfterViewInit() {

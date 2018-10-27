@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, AfterViewInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-payment',
@@ -7,11 +8,14 @@ import { routerTransition } from '../../router.animations';
     styleUrls: ['./payment.component.scss'],
     animations: [routerTransition()]
 })
-export class PaymentComponent implements OnInit {
+export class PaymentComponent implements OnInit, AfterViewInit {
     // bar chart
 
-
-    constructor() {}
+    constructor( public router: Router, private renderer: Renderer2) {
+    }
+    ngAfterViewInit() {
+        this.renderer.setStyle(document.body, 'background', 'none');
+    }
 
     ngOnInit() {}
 }

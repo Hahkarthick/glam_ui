@@ -1,0 +1,20 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'News'"></app-page-header>
+    <div class="row news_posts">
+        <div class="col-md-12 col-sm-12 col-xs-12" *ngFor="let news of news">
+            <h3 class="title text-center">{{news.title}}</h3>
+            <img src="assets/images/news/{{news.photo}}" [alt]="news.title" class="col-md-12 col-sm-12 col-xs-12 img-responsive">            
+            <div>
+                {{news.description}}
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6 col-xs-6 text-left">
+                    Posted on : {{news.date_time}}
+                </div>
+                <div class="col-md-6 col-xs-6 text-right fa fa-heart">
+                    {{news.likes}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

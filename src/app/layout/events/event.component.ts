@@ -13,8 +13,8 @@ export class EventComponent implements OnInit, AfterViewInit {
     protected events: Array<any> = [];
 
     constructor(private renderer: Renderer2, private listing: ListingService) {
-        this.listing.listEvents().subscribe(blogs => {
-            this.events.push(blogs);
+        this.listing.listEvents().subscribe(event => {
+            this.events = event;
         });
 /*         this.events.push(
             {

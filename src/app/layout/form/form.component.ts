@@ -13,6 +13,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
     animations: [routerTransition()]
 })
 export class FormComponent implements OnInit {
+    loginErrorMsg: String;
     errorMsg: String;
     successMsg: String;
     user = new User();
@@ -35,12 +36,17 @@ export class FormComponent implements OnInit {
             if (pass.length > 5) {
                 this.services.createUsers(this.user)
                     .subscribe(user => {
-                        successMsg.textContent = 'User Created!!';
-                        window.scrollTo(0, 0);
-                        successMsg.classList.add('success', 'alert-success');
-                        window.setTimeout(function () {
-                            window.location.href = '/login';
-                        }, 3000);
+                        if (user === 1) {
+                            successMsg.textContent = 'User Created!!';
+                            window.scrollTo(0, 0);
+                            successMsg.classList.add('success', 'alert-success');
+                            window.setTimeout(function () {
+                                window.location.href = '/login';
+                            }, 3000);
+                        } else {
+                            error(user);
+                        }
+
                     });
             } else {
                 error('Password Must Minimum 6 characters');
@@ -55,28 +61,6 @@ export class FormComponent implements OnInit {
         }
 
     }
-
-    onLogin(): void {
-        this.services.verifyUser(this.login)
-            .subscribe(login => {
-                function dateAdd(dates, interval, units) {
-                    let ret = new Date(dates); // don't change original date
-                    const checkRollover = function () { if (ret.getDate() !== dates.getDate()) { ret.setDate(0); } };
-                    switch (interval.toLowerCase()) {
-                        case 'year': ret.setFullYear(ret.getFullYear() + units); checkRollover(); break;
-                        case 'quarter': ret.setMonth(ret.getMonth() + 3 * units); checkRollover(); break;
-                        case 'month': ret.setMonth(ret.getMonth() + units); checkRollover(); break;
-                        case 'week': ret.setDate(ret.getDate() + 7 * units); break;
-                        case 'day': ret.setDate(ret.getDate() + units); break;
-                        case 'hour': ret.setTime(ret.getTime() + units * 3600000); break;
-                        case 'minute': ret.setTime(ret.getTime() + units * 60000); break;
-                        case 'second': ret.setTime(ret.getTime() + units * 1000); break;
-                        default: ret = undefined; break;
-                    }
-                    return ret;
-                }
-                const date = new Date();
-                const expTime = dateAdd(date, 'hour', 1);
                 /*
                 * Samples
                     out('start:      ' + date);
@@ -97,10 +81,41 @@ export class FormComponent implements OnInit {
                         alert("Do something here!");
                     }
                 */
-
+    onLogin(): void {
+        const loginErrorMsg = document.getElementById('lerror');
+        this.services.verifyUser(this.login)
+            .subscribe(login => {
                 console.log(login);
-                document.cookie = 'user=true; expires=' + expTime + '; path=/; HttpOnly=true';
-                window.location.href = '/';
+                if (login.status === 'Success') {
+                    const date = new Date();
+                    const expTime = dateAdd(date, 'hour', 1);
+                    document.cookie = 'user=true; expires=' + expTime + '; path=/';
+                    // document.cookie = 'user=true; expires=' + expTime + '; path=/; HttpOnly=true';
+                    window.location.href = '/';
+                } else {
+                    error('Incorrect Username or Password');
+                }
+                function dateAdd(dates, interval, units) {
+                    let ret = new Date(dates); // don't change original date
+                    const checkRollover = function () { if (ret.getDate() !== dates.getDate()) { ret.setDate(0); } };
+                    switch (interval.toLowerCase()) {
+                        case 'year': ret.setFullYear(ret.getFullYear() + units); checkRollover(); break;
+                        case 'quarter': ret.setMonth(ret.getMonth() + 3 * units); checkRollover(); break;
+                        case 'month': ret.setMonth(ret.getMonth() + units); checkRollover(); break;
+                        case 'week': ret.setDate(ret.getDate() + 7 * units); break;
+                        case 'day': ret.setDate(ret.getDate() + units); break;
+                        case 'hour': ret.setTime(ret.getTime() + units * 3600000); break;
+                        case 'minute': ret.setTime(ret.getTime() + units * 60000); break;
+                        case 'second': ret.setTime(ret.getTime() + units * 1000); break;
+                        default: ret = undefined; break;
+                    }
+                    return ret;
+                }
+                function error(message) {
+                    loginErrorMsg.textContent = message;
+                    window.scrollTo(0, 0);
+                    loginErrorMsg.classList.add('alert', 'alert-danger');
+                }
             });
     }
     constructor(public services: UserService) { }

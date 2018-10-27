@@ -21,6 +21,7 @@ const routes: Routes = [
             { path: 'videoListing/:id', loadChildren: './videoListing/videoListing.module#VideoListingModule', canActivate: [AuthGuard] },
             { path: 'blogListing/:id', loadChildren: './blogListing/blogListing.module#BlogListingModule', canActivate: [AuthGuard] },
             { path: 'eventListing/:id', loadChildren: './eventListing/eventListing.module#EventListingModule', canActivate: [AuthGuard] },
+            { path: 'newsListing/:id', loadChildren: './newsListing/newsListing.module#NewsListingModule', canActivate: [AuthGuard] },
             { path: 'gallery', loadChildren: './grid/grid.module#GridModule' },
         ]
     }

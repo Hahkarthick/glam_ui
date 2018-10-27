@@ -14,11 +14,11 @@ export class UserService {
   constructor(public http: Http) { }
 
   createUsers(user: User) {
-    return this.http.post('http://localhost/php_rest_api/glam.php?action=insert_users', user)
+    return this.http.post('../php_rest_api/glam.php?action=insert_users', user)
       .map(res => res.json());
   }
   verifyUser(login: Login) {
-    return this.http.post('http://localhost/php_rest_api/glam.php?action=verify_user', login)
+    return this.http.post('../php_rest_api/glam.php?action=verify_user', login)
       .map(res => res.json());
   }
 }

@@ -1,10 +1,24 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'Videos'"></app-page-header>
-    <div class="row blog_posts">
+    <div class="row video_posts">
         <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let video of videos">
-            <a [routerLink]="['/videoListing']">
+            <a [routerLink]="['/videoListing/'+video.id]" routerLinkActive="router-link-active">
                 <div class="image">
-                    <iframe [src]="video.source" frameborder="0" allowfullscreen></iframe>
+                    <!-- <img class="img-fluid" [src]="video.photo" [alt]="video.image_alt"> -->
+                    <img class="img-fluid img-responsive" src="assets/images/videos/{{video.photo}}" [alt]="video.title">
+                    <div class="caption">
+                        <!-- <div class="video_count">{{video.video_count}}</div> -->
+                        <div class="content_title video_title">{{video.title}}</div>
+                        <div class="video_po_date">
+                            <span>Posted On:</span>
+                            <span class="text-right">{{video.date_time}}</span>
+                        </div>
+                        <div class="video_icons">
+                            <span>Likes:</span>
+                            <!-- <span class="video_cmnt">{{video.video_cmnt_count}}</span> -->
+                            <span aria-hidden="true" class="fa fa-heart video_likes">{{video.likes}}</span>
+                        </div>
+                    </div>
                 </div>
             </a>
         </div>

@@ -11,11 +11,11 @@ import { ListingService } from '../../service/listing.service';
 })
 export class VideoComponent implements OnInit, AfterViewInit {
 
-    protected videos: Array<any> = [];
+    protected videos;
 
     constructor(private renderer: Renderer2, private sanitizer: DomSanitizer, private listing: ListingService) {
         this.listing.listVideos().subscribe(videos => {
-            this.videos.push(videos);
+            this.videos = videos;
         });
 /*         this.videos.push(
             {

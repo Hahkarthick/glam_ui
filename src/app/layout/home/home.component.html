@@ -15,9 +15,14 @@
     <div class="col-md-12">
       <a [routerLinkActive]="['router-link-active']" [routerLink]="['/video']">Videos</a>
     </div>
-    <div class="col-md-12">
-      <a [routerLinkActive]="['router-link-active']" [routerLink]="['/login']">Login/Register</a>
+    <div class="col-md-12" *ngIf="isLoggedIn(); else loggedOut">
+          <a [routerLinkActive]="['router-link-active']" (click)="onLoggedout()">Logout</a>
     </div>
+    <ng-template #loggedOut>
+        <div class="col-md-12">
+            <a [routerLinkActive]="['router-link-active']" [routerLink]="['/login']">Login/Sign-up</a>
+        </div>
+    </ng-template>
   </div>
 </div>
 <!-- Modal -->

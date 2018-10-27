@@ -23,14 +23,19 @@
                 <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/events']">Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/videos']">Video</a>
+                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/video']">Video</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/login']">Login/Sign-up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" (click)="onLoggedout()">Logout</a>
-            </li>
+            <div *ngIf="isLoggedIn(); else loggedOut">
+                <li class="nav-item">
+                    <a class="nav-link" (click)="onLoggedout()">Logout</a>
+                </li>
+            </div>
+            <ng-template #loggedOut>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/login']">Login/Sign-up</a>
+                </li>
+            </ng-template>
+
         </ul>
     </div>
 </nav>
