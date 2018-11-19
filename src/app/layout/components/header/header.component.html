@@ -4,42 +4,45 @@
         <span [hidden]="collapse=='open'" class="fa fa-bars fa-lg"></span>
         <span [hidden]="collapse=='closed'" class="fa fa-times fa-lg"></span>
     </button>
-    <a class="navbar-brand" [routerLink]="['/']">Glamerotica101</a>
-    <div class="collapse navbar-collapse navbar-toggleable-md  justify-content-center" id="mainNavbarCollapse">
-        <ul class="nav navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/']">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/news']">News</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/blog']">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/gallery']">Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/events']">Events</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/video']">Video</a>
-            </li>
-            <div *ngIf="isLoggedIn(); else loggedOut">
-                <li class="nav-item">
-                    <a class="nav-link" (click)="onLoggedout()">Logout</a>
-                </li>
-            </div>
-            <ng-template #loggedOut>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/login']">Login/Sign-up</a>
-                </li>
-            </ng-template>
-
-        </ul>
+    <a class="navbar-brand" [routerLink]="['/']">Glamerotica101</a>  
+</nav>
+<nav class="pn-ProductNav" id="prdNavv">
+    <div id="ProductNav_Contents" class="pn-ProductNav_Contents">
+        <a [routerLink]="['/blog']"  id="active" class="menu-link pn-ProductNav_Link" aria-selected="true"><span>Blog</span></a>
+        <a [routerLink]="['/news']" class="menu-link pn-ProductNav_Link"><span>News</span></a>
+        <a [routerLink]="['/gallery']" class="menu-link pn-ProductNav_Link"><span>Gallery</span></a>
+        <a [routerLink]="['/events']" class="menu-link pn-ProductNav_Link"><span>Events</span></a>
+        <a [routerLink]="['/video']" class="menu-link pn-ProductNav_Link"><span>Video</span></a>
     </div>
 </nav>
+<div class="sidenav justify-content-center" id="mySidenav">
+    <div class="sidenav-header col-md-12">Settings</div>
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link">Pay Information</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Help</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">FAQ</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Change Log In</a>
+        </li>
+        <div *ngIf="isLoggedIn(); else loggedOut">
+            <li class="nav-item">
+                <a class="nav-link" (click)="onLoggedout()">Logout</a>
+            </li>
+        </div>
+        <ng-template #loggedOut>
+            <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['router-link-active']" [routerLink]="['/login']">Login/Sign-up</a>
+            </li>
+        </ng-template>
 
+    </ul>
+</div>
 <div class="modal" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">

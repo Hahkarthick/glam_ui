@@ -15,9 +15,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
     /* Works like window.load */
     ngAfterViewInit() {
-        this.elementRef.nativeElement.ownerDocument.body.style.background =
-            'url("assets/images/pexels-photo-245388.jpeg")no-repeat scroll center top';
-        this.elementRef.nativeElement.ownerDocument.body.style.backgroundSize = '100% 100%';
+/*         this.elementRef.nativeElement.ownerDocument.body.style.background =
+            'url("assets/images/potrait.jpg")no-repeat scroll center top';
+        this.elementRef.nativeElement.ownerDocument.body.style.backgroundSize = '100% 100%'; */
         // this.renderer.setStyle(document.body, 'background-color', 'yellow');
 
 

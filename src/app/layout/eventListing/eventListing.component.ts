@@ -12,14 +12,14 @@ import { ListingService } from '../../service/listing.service';
 export class EventListingComponent implements OnInit, AfterViewInit {
 
     protected events;
+    protected prev: Number;
+    protected next: Number;
 
     constructor(private renderer: Renderer2, private route: ActivatedRoute,
          private listing: ListingService,  private sanitizer: DomSanitizer, private router: Router) {
-        const id = +this.route.snapshot.params['id'];
-        this.listing.eventsDescription(id).subscribe(events => {
-            console.log(events);
-            this.events = events;
-        });
+        const id = this.route.snapshot.params['id'];
+        console.log(id);
+        this.postService(id);
 /*         this.events.push(
             {
                 event_source: this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/CvP92martxs'),
@@ -35,4 +35,33 @@ export class EventListingComponent implements OnInit, AfterViewInit {
 
 
     ngOnInit() { }
+
+    nextPost() {
+        console.log('welcome' + this.next);
+        if (this.next.toString() !== 'NaN') {
+            document.getElementById('previous').style.display = 'block';
+            this.router.navigateByUrl('/newsListing/' + this.next);
+            this.events = [];
+            this.postService(this.next);
+        } else {
+            document.getElementById('next').style.display = 'none';
+        }
+    }
+    previousPost() {
+        if (this.prev.toString() !== 'NaN') {
+            document.getElementById('next').style.display = 'block';
+            this.router.navigateByUrl('/newsListing/' + this.prev);
+            this.events = [];
+            this.postService(this.prev);
+        } else {
+            document.getElementById('previous').style.display = 'none';
+        }
+    }
+    postService(id) {
+        this.listing.eventsDescription(id).subscribe(event => {
+            this.events.push(event);
+            this.next = parseInt(event.id, 10) + 1;
+            this.prev = parseInt(event.id, 10) - 1;
+        });
+    }
 }

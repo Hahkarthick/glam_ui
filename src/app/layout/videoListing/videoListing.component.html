@@ -1,10 +1,11 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Videos'"></app-page-header>
     <div class="row video_posts">
         <div class="col-md-12 col-sm-12 col-xs-12" *ngFor="let video of videos">
+            <a class="fa fa-angle-left post_prev" (click)="previousPost()" id="previous"></a>
             <!-- <img [src]="video.photo" [alt]="video.title" class="col-md-12 col-sm-12 col-xs-12 img-responsive"> -->
             <h2 class="title">{{video.title}}</h2>
             <video src="assets/images/videos/{{video.photo}}"></video>
+            <a id="next" (click)="nextPost()" class="fa fa-angle-right post_next" aria-hidden="true"></a>
             <div>
                 {{video.description}}
             </div>

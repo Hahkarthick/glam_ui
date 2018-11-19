@@ -1,26 +1,35 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Blog'"></app-page-header>
+    <!-- <app-page-header [heading]="'Blog'"></app-page-header> -->
+
     <div class="row blog_posts">
-        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let blog of blogs">
+        <div class="col-md-4 col-sm-4 col-xs-12 blog-div" *ngFor="let blog of blogs">
             <a [routerLink]="['/blogListing/'+blog.id]" routerLinkActive="router-link-active">
                 <div class="image">
-                    <!-- <img class="img-fluid" [src]="blog.photo" [alt]="blog.image_alt"> -->
+                    <!-- <img class="img-fluid" src="https://picsum.photos/200/300/?random" [alt]="blog.image_alt"> -->
                     <img class="img-fluid img-responsive" src="assets/images/blog/{{blog.photo}}" [alt]="blog.title">
                     <div class="caption">
                         <!-- <div class="blog_count">{{blog.blog_count}}</div> -->
-                        <div class="content_title blog_title">{{blog.title}}</div>
-                        <div class="blog_po_date">
-                            <span>Posted On:</span>
-                            <span class="text-right">{{blog.date_time}}</span>
-                        </div>
-                        <div class="blog_icons">
-                            <span>Likes:</span>
-                            <!-- <span class="blog_cmnt">{{blog.blog_cmnt_count}}</span> -->
+                    </div>
+                </div>
+                <div class="text-center">{{blog.title}}</div>
+                <div class="text-center blog_po_date">
+                    {{blog.date_time}}
+                </div>
+                <div class="container">
+                    <div class="blog_icons row">
+                        <div class="col-sm-4 col-xs-4">
                             <span aria-hidden="true" class="fa fa-heart blog_likes">{{blog.likes}}</span>
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                            <span class="blog_cmnt fa fa-commenting-o" aria-hidden="true"></span>
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                            <span class="blog_cmnt fa fa-users" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
             </a>
+
         </div>
     </div>
 </div>

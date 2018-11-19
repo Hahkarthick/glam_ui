@@ -10,21 +10,18 @@ import { ListingService } from '../../service/listing.service';
     animations: [routerTransition()]
 })
 export class BlogListingComponent implements OnInit, AfterViewInit {
-
-    protected blogs: Array<any> = [];;
-
+    protected blogs: Array<any> = [];
+    protected prev: Number;
+    protected next: Number;
     constructor(
         private renderer: Renderer2,
         private route: ActivatedRoute,
         private listing: ListingService,
         private sanitizer: DomSanitizer,
         private router: Router) {
-
-        const id = +this.route.snapshot.params['id'];
-        this.listing.blogDescription(id).subscribe(blogs => {
-            console.log(blogs);
-            this.blogs.push(blogs);
-        });
+        const id = this.route.snapshot.params['id'];
+        console.log(id);
+        this.postService(id);
         /*
             this.blogs.push(
             {
@@ -43,10 +40,40 @@ export class BlogListingComponent implements OnInit, AfterViewInit {
         */
     }
 
+
     ngAfterViewInit() {
         this.renderer.setStyle(document.body, 'background', 'none');
     }
+    ngOnInit() {
 
-
-    ngOnInit() { }
+    }
+    nextPost() {
+        console.log('welcome' + this.next);
+        if (this.next.toString() !== 'NaN') {
+            document.getElementById('previous').style.display = 'block';
+            this.router.navigateByUrl('/blogListing/' + this.next);
+            this.blogs = [];
+            this.postService(this.next);
+        } else {
+            document.getElementById('next').style.display = 'none';
+        }
+    }
+    previousPost() {
+        if (this.prev.toString() !== 'NaN') {
+            document.getElementById('next').style.display = 'block';
+            this.router.navigateByUrl('/blogListing/' + this.prev);
+            this.blogs = [];
+            this.postService(this.prev);
+        } else {
+            document.getElementById('previous').style.display = 'none';
+        }
+    }
+    postService(id) {
+        this.listing.blogDescription(id).subscribe(blog => {
+            console.log(blog);
+            this.blogs.push(blog);
+            this.next = parseInt(blog.id, 10) + 1;
+            this.prev = parseInt(blog.id, 10) - 1;
+        });
+    }
 }

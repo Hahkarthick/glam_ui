@@ -1,15 +1,19 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Blogs'"></app-page-header>
+    <router-outlet></router-outlet>
+    
     <div class="row blog_posts">
         <div class="col-md-12 col-sm-12 col-xs-12" *ngFor="let blog of blogs">
             <h3 class="title text-center">{{blog.title}}</h3>
+            <a class="fa fa-angle-left post_prev" (click)="previousPost()" id="previous"></a>
             <img src="assets/images/blog/{{blog.photo}}" [alt]="blog.title" class="col-md-12 col-sm-12 col-xs-12 img-responsive">
+            <!-- <img class="img-fluid" src="https://picsum.photos/700/500/?random" [alt]="blog.image_alt"> -->
+            <a id="next" (click)="nextPost()" class="fa fa-angle-right post_next" aria-hidden="true"></a>
             <div [innerHTML]="blog.description">
-                
+
             </div>
             <div class="col-md-12">
                 <div class="col-md-6 col-xs-6 text-left">
-                  Posted on : {{blog.date_time}}
+                    Posted on : {{blog.date_time}}
                 </div>
                 <div class=" col-md-6 col-xs-6 text-right fa fa-heart">
                     {{blog.likes}}

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ElementRef } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationError, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
     pushRightClass = 'push-right';
     closeResult: string;
-    constructor(private translate: TranslateService, public router: Router) {
+    constructor(private translate: TranslateService, public router: Router, private elementRef: ElementRef) {
 
         this.translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
         this.translate.setDefaultLang('en');
@@ -25,9 +25,37 @@ export class HeaderComponent implements OnInit {
 
             if (event instanceof NavigationEnd) {
                 // Hide loading indicator
-                if (this.collapse === 'open') {
+                // console.log('changed');
+                const path = window.location.href;
+                const res = path.split('#/');
+                // console.log(res[1]);
+                const menu = document.getElementsByClassName('menu-link');
+                Array.from(menu).forEach(function(element) {
+                    const span = element.getElementsByTagName('span');
+                    const value = span[0].textContent;
+                    // console.log(value);
+                    if (value.toLowerCase() === res[1].toLowerCase()) {
+                        document.getElementById('ProductNav_Contents').style.display = 'block';
+                        const active = document.getElementById('active');
+                        active.removeAttribute('aria-selected');
+                        active.removeAttribute('id');
+                        const parentTag = span[0].parentElement;
+                        parentTag.setAttribute('id', 'active');
+                        parentTag.setAttribute('aria-selected', 'true');
+                        const y = parentTag.scrollWidth;
+                        const scrollcont = document.getElementById('prdNav');
+                        parentTag.scrollIntoView({
+                            behavior: 'auto',
+                            block: 'center',
+                            inline: 'center'
+                        });
+                    } else if (res[1].toLowerCase() === 'login') {
+                        document.getElementById('ProductNav_Contents').style.display = 'none';
+                    }
+                  });
+                /* if (this.collapse === 'open') {
                     document.getElementById('navbtn').click();
-                }
+                } */
             }
 
             if (event instanceof NavigationError) {
@@ -39,6 +67,16 @@ export class HeaderComponent implements OnInit {
 
     }
     collapse = 'closed';
+
+    openNav() {
+        document.getElementById('mySidenav').style.width = '70%';
+        this.elementRef.nativeElement.ownerDocument.body.style.marginLeft = '70%';
+    }
+
+    closeNav() {
+        document.getElementById('mySidenav').style.width = '0';
+        this.elementRef.nativeElement.ownerDocument.body.style.marginLeft = '0';
+    }
 
     isLoggedIn(): boolean {
         const userCookies = document.cookie.match(/user[^;]+/);
@@ -53,6 +91,11 @@ export class HeaderComponent implements OnInit {
     }
     toggleCollapse() {
         this.collapse = this.collapse === 'open' ? 'closed' : 'open';
+        if (this.collapse === 'open') {
+            this.openNav();
+        } else {
+            this.closeNav();
+        }
     }
     openModal() {
         document.getElementById('myModal').style.display = 'block';
@@ -60,7 +103,24 @@ export class HeaderComponent implements OnInit {
     modal_close() {
         document.getElementById('myModal').style.display = 'none';
     }
-    ngOnInit() { }
+    ngOnInit() {
+        const menu = document.getElementsByClassName('menu-link');
+
+        Array.from(menu).forEach(function(element) {
+            element.addEventListener('click', (e) => {
+                e.preventDefault();
+                const active = document.getElementById('active');
+                active.removeAttribute('aria-selected');
+                active.removeAttribute('id');
+                const current = element;
+                console.log(element);
+                current.setAttribute('id', 'active');
+                current.setAttribute('aria-selected', 'true');
+                const y = current.scrollLeft = 100;
+                const Crntactive = document.getElementById('active');
+            });
+          });
+    }
 
     onLoggedout() {
         // localStorage.removeItem('isLoggedin');

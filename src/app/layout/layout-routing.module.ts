@@ -17,6 +17,7 @@ const routes: Routes = [
             { path: 'news', loadChildren: './news/news.module#NewsModule' },
             { path: 'blog', loadChildren: './blog/blog.module#BlogModule' },
             { path: 'events', loadChildren: './events/event.module#EventModule' },
+            { path: 'forgetPassword', loadChildren: './forgetPassword/forgetPassword.module#ForgetPasswordModule' },
             { path: 'video', loadChildren: './video/video.module#VideoModule' },
             { path: 'videoListing/:id', loadChildren: './videoListing/videoListing.module#VideoListingModule', canActivate: [AuthGuard] },
             { path: 'blogListing/:id', loadChildren: './blogListing/blogListing.module#BlogListingModule', canActivate: [AuthGuard] },

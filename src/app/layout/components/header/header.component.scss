@@ -1,6 +1,64 @@
 $topnav-background-color: #000000;
 
 :host {
+    .menu {
+        width: 100%;
+        max-width: 300px;
+        background-color: rgba(0, 0, 0, 1);
+        background-color:rgba(4, 180, 49, 0.6);
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        overflow-x: scroll;
+    }
+    #menu-center ul li {
+        list-style: none;
+        margin: 0 30px 0 0;
+        //display: inline;
+        position:relative;
+    }
+    #navbtn{
+        z-index: 10;
+    }
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 30;
+        top: 68px;
+        left: 0;
+        background-color: #d21f00;
+        overflow-x: hidden;
+        transition: 0.5s;
+    }
+    .sidenav-header {
+        padding: 10px 0px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #000000;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    .sidenav a:hover {
+        color: #f1f1f1;
+    }
+    
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
     .navbar-expand-lg .navbar-nav .nav-link {
         padding: 2rem;
     }
@@ -8,11 +66,9 @@ $topnav-background-color: #000000;
         padding: 0px;
         background-color: $topnav-background-color;
         .navbar-brand {
-            color: #d21f00;
+            color: #ffffff;
             font-size: larger;
             font-weight: bold;
-            padding-left: 1rem;
-
         }
         .nav-item > a {            
             color: #d21f00;
@@ -144,12 +200,15 @@ $topnav-background-color: #000000;
             border-top: solid;
             padding-top: .425rem;
             padding-left: 0.75rem;
+            height: 100%;
+            background: #ffffff;
         }
         .navbar-nav .nav-item {
             float: none;
         }
         .navbar-brand {
-            float: right;
+           margin: auto;
+           padding:20px;
         }
         .navbar-brand,
         .navbar-nav .nav-item {
@@ -163,7 +222,7 @@ $topnav-background-color: #000000;
             float: none;
         }
         .navbar-toggler{
-            font-size: 2rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color:#d21f00;
         }

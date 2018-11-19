@@ -1,11 +1,10 @@
 <div [@routerTransition]>
-  <app-page-header [heading]="'Our Gallery'" [icon]="'fa-wrench'"></app-page-header>
-  <div class="container">
+  <div class="">
     <div class="gallery">
       <div class="view overlay hm-black-light gallery-item" *ngFor="let gallery of gallery">
-        <img src="assets/images/gallery/{{gallery.photo}}" [alt]="gallery.title" class="img-fluid">
-        <div class="mask flex-center">
-          <p class="white-text">{{gallery.title}}</p>
+        <div class="image">
+          <img src="assets/images/gallery/{{gallery.photo}}" [alt]="gallery.title" class="img-fluid">
+          <!-- <img class="img-fluid" src="https://picsum.photos/700/500/?random" [alt]="blog.image_alt"> -->
         </div>
       </div>
     </div>

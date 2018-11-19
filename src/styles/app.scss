@@ -4,7 +4,10 @@
 @import "utils";
 @import "rtl";
 @import "responsive";
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+*{
+    font-family: 'Open Sans', sans-serif;
+}
 body {
     height: 90vh;
 }
@@ -17,6 +20,7 @@ footer {
 }
 .image{
     position: relative;
+    max-height: 300px;
 }
 
 .non-rigistered .image:after{
@@ -26,20 +30,20 @@ footer {
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, .6);
+    background:rgba(0, 0, 0, 0.83);;
     opacity: 1
 }
 .non-rigistered .image:before {
     position: absolute;
-    content: 'Unlock to view Content';
+    content: 'UNLOCK';
     width:100%;
-    color:#fff;
+    color:#d2381e;
     z-index:1;
     bottom:50%;
-    font-size:20px;
+    font-size:30px;
+    font-weight: bold;
     padding:4px 10px;
     text-align:center;
-    background-color:red;
     box-sizing:border-box;
     -moz-box-sizing:border-box;
 }
@@ -49,6 +53,80 @@ footer {
     font-weight: bold;
     background: #d2381e;
 }
-.fa-heart{
+.fa-heart ,.fa-commenting-o, .fa-users{
     color: #d2381e;
+}
+.pn-ProductNav {
+    margin-top: 75px;
+    /* Make this scrollable when needed */
+    overflow-x: auto;
+    /* We don't want vertical scrolling */
+    overflow-y: hidden;
+    /* Make an auto-hiding scroller for the 3 people using a IE */
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    /* For WebKit implementations, provide inertia scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* We don't want internal inline elements to wrap */
+    white-space: nowrap;
+    /* Remove the default scrollbar for WebKit implementations */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .menu-link{
+        width: 100%;
+    }
+    .pn-ProductNav_Contents{
+        // width: 1000px;
+    }
+}
+
+.pn-ProductNav_Link {
+    width: 100%;
+    padding-left: 40%;
+	text-decoration: none;
+	color: #888;
+	font-size: 1.2em;
+	font-family: -apple-system, sans-serif;
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	&[aria-selected="true"] {
+        color: #111;
+        span{
+            border-bottom: solid 2px #d21f00;
+        }
+        text-decoration: none;
+	}
+}
+.post_prev{
+    position: absolute;
+    left: 0;
+    font-size: 5em;
+    // top: %;
+    color:rgba(0, 0, 0, 0.616);
+    text-decoration: none !important;
+    &:hover{
+        color: #d21f00
+    }
+}
+.post_next{
+    position: absolute;
+    right: 0;
+    font-size: 5em;
+    top: 3%;
+    color: rgba(0, 0, 0, 0.616);
+    text-decoration: none !important;
+    &:hover{
+        color: #d21f00
+    }
+}
+@media screen and (min-width: 442px) {
+    .image{
+        max-height: 500px;
+        height: 350px;
+    }
+
+}
+img{
+    height: 300px !important;
 }

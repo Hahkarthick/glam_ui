@@ -1,28 +1,32 @@
 <div [@routerTransition]>
   <div class="col-md-12 row home-background">
-    <div class="col-md-12">
-      <a [routerLinkActive]="['router-link-active']" [routerLink]="['/news']">News</a>
-    </div>
-    <div class="col-md-12">
-      <a [routerLinkActive]="['router-link-active']" [routerLink]="['/blog']">Blog</a>
-    </div>
-    <div class="col-md-12">
-      <a [routerLinkActive]="['router-link-active']" [routerLink]="['/gallery']">Gallery</a>
-    </div>
-    <div class="col-md-12">
-      <a [routerLinkActive]="['router-link-active']" [routerLink]="['/events']">Events</a>
-    </div>
-    <div class="col-md-12">
-      <a [routerLinkActive]="['router-link-active']" [routerLink]="['/video']">Videos</a>
-    </div>
-    <div class="col-md-12" *ngIf="isLoggedIn(); else loggedOut">
-          <a [routerLinkActive]="['router-link-active']" (click)="onLoggedout()">Logout</a>
-    </div>
-    <ng-template #loggedOut>
+    <div class="overlay">
+      <div class="contents">
         <div class="col-md-12">
-            <a [routerLinkActive]="['router-link-active']" [routerLink]="['/login']">Login/Sign-up</a>
+          <a [routerLinkActive]="['router-link-active']" [routerLink]="['/news']">News</a>
         </div>
-    </ng-template>
+        <div class="col-md-12">
+          <a [routerLinkActive]="['router-link-active']" [routerLink]="['/blog']">Blog</a>
+        </div>
+        <div class="col-md-12">
+          <a [routerLinkActive]="['router-link-active']" [routerLink]="['/gallery']">Gallery</a>
+        </div>
+        <div class="col-md-12">
+          <a [routerLinkActive]="['router-link-active']" [routerLink]="['/events']">Events</a>
+        </div>
+        <div class="col-md-12">
+          <a [routerLinkActive]="['router-link-active']" [routerLink]="['/video']">Videos</a>
+        </div>
+        <div class="col-md-12" *ngIf="isLoggedIn(); else loggedOut">
+          <a [routerLinkActive]="['router-link-active']" (click)="onLoggedout()">Logout</a>
+        </div>
+        <ng-template #loggedOut>
+          <div class="col-md-12">
+            <a [routerLinkActive]="['router-link-active']" [routerLink]="['/login']">Login</a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
   </div>
 </div>
 <!-- Modal -->

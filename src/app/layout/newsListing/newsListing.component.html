@@ -1,9 +1,10 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'News'"></app-page-header>
     <div class="row news_posts">
         <div class="col-md-12 col-sm-12 col-xs-12" *ngFor="let news of news">
             <h3 class="title text-center">{{news.title}}</h3>
+            <a class="fa fa-angle-left post_prev" (click)="previousPost()" id="previous"></a>
             <img src="assets/images/news/{{news.photo}}" [alt]="news.title" class="col-md-12 col-sm-12 col-xs-12 img-responsive">            
+            <a id="next" (click)="nextPost()" class="fa fa-angle-right post_next" aria-hidden="true"></a>
             <div>
                 {{news.description}}
             </div>

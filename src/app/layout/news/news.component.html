@@ -1,19 +1,11 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'News'"></app-page-header>
     <div class="row news_posts">
         <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let news of news">
             <a [routerLink]="['/newsListing/'+news.id]" routerLinkActive="router-link-active">
                 <div class="image">
+                    <!-- <img class="img-fluid" src="https://picsum.photos/700/500/?random" [alt]="news.image_alt"> -->
                     <img class="img-fluid" src="assets/images/news/{{news.photo}}" [alt]="news.image_alt">
-                    <div class="caption">
-                        <!-- <div class="news_count">{{news.news_count}}</div> -->
-                        <div class="content_title news_title">{{news.title}}</div>
-                        <div class="news_po_date">{{news.date_time}}</div>
-                        <div class="news_icons">
-                            <!-- <span class="news_cmnt">{{news.news_cmnt_count}}</span> -->
-                            <span class="news_likes">{{news.likes}}</span>
-                        </div>
-                    </div>
+                    <div class="text-center">{{news.title}}</div>
                 </div>
             </a>
         </div>

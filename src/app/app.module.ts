@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { UserService } from './service/user.service';
 import { ListingService } from './service/listing.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 // AoT requires an exported function for factories
@@ -40,7 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
     declarations: [
         AppComponent
     ],
-    providers: [AuthGuard, UserService, ListingService],
+    providers: [AuthGuard, UserService, ListingService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

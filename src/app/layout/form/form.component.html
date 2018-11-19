@@ -1,5 +1,5 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header>
+    <!-- <app-page-header [heading]="'Forms'" [icon]="'fa-edit'"></app-page-header> -->
 
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm- col- ">
@@ -15,20 +15,20 @@
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="loginfName">Email</label>
-                                    <input type="email" [(ngModel)]="login.email" class="form-control" #loginEmail="ngModel"
-                                    placeholder="name@example.com" name="loginEmail" required>
-                                        <div *ngIf="(loginEmail.errors?.required && loginForm.submitted || loginEmail.errors?.required && loginEmail.touched)"
+                                    <label for="loginEmail">Email</label>
+                                    <input type="email" class="form-control" [(ngModel)]="login.email"
+                                        #loginEmail="ngModel"  name="loginEmail" placeholder="name@email" required>
+                                        <div *ngIf="(loginEmail.errors?.required && loginForm.submitted ||loginEmail.errors?.required && loginEmail.touched)"
                                         class="alert alert-danger">
-                                        Email is Required
+                                        Enter a Email
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="email">Password</label>
+                                    <label for="loginPassword">Password</label>
                                     <input type="password" class="form-control" [(ngModel)]="login.password"
-                                        #loginPassword="ngModel" name="loginPassword" placeholder="*******" required>
+                                        #loginPassword="ngModel"  name="loginPassword" placeholder="*******" required>
                                         <div *ngIf="(loginPassword.errors?.required && loginForm.submitted ||loginPassword.errors?.required && loginPassword.touched)"
                                         class="alert alert-danger">
                                         Password is Required
@@ -40,6 +40,11 @@
                                     <div class="col col-md-12">
                                         <button (click)="onLogin()" type="button" class="btn btn-primary col-md-12">Sign in</button>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col col-md-12">
+                                    <button [routerLink]="['/forgetPassword']" routerLinkActive="router-link-active"  type="button" class="btn btn-warning col-md-12">Forget Password</button>
                                 </div>
                             </div>
                         </form>
@@ -98,11 +103,11 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="email">Email address</label>
-                                    <input type="email" class="form-control" [(ngModel)]="user.email" #userEmail="ngModel"
-                                        name="email" placeholder="name@example.com" required>
-                                    <div *ngIf="userEmail.errors?.required && userForm.submitted ||userEmail.errors?.required && userEmail.touched"
+                                    <input type="email" class="form-control" [(ngModel)]="user.email"
+                                        #userEmail="ngModel"  name="userEmail" placeholder="name@email" required>
+                                        <div *ngIf="(userEmail.errors?.required && userForm.submitted ||userEmail.errors?.required && userEmail.touched)"
                                         class="alert alert-danger">
-                                        Email is Required
+                                        Enter a Email
                                     </div>
                                 </div>
                             </div>
