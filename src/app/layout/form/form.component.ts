@@ -99,7 +99,9 @@ export class FormComponent implements OnInit, AfterViewInit {
                         const date = new Date();
                         const expTime = dateAdd(date, 'hour', 1);
                         document.cookie = 'user=true; expires=' + expTime + '; path=/';
-                        // document.cookie = 'user=true; expires=' + expTime + '; path=/; HttpOnly=true';
+                        document.cookie = 'Id=' + login.userID + '; expires=' + expTime + '; path=/';
+                        document.cookie = 'user=true; expires=' + expTime + '; path=/; HttpOnly=true';
+                        document.cookie = 'user=Id; expires=' + expTime + '; path=/; HttpOnly=true';
                         window.location.href = '/';
                     } else {
                         error('Incorrect Username or Password');
@@ -140,4 +142,3 @@ export class FormComponent implements OnInit, AfterViewInit {
         this.renderer.setStyle(document.body, 'background', 'none');
     }
 }
-

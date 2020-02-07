@@ -1,9 +1,14 @@
 <div [@routerTransition]>
     <div class="row event_posts">
-        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let event of events">
+        <div class="col-md-4 col-sm-6 col-xs-12 no-padding" *ngFor="let event of events">
             <a [routerLink]="['/eventListing/'+event.id]" routerLinkActive="router-link-active">
-                <div class="image">
-                    <img class="img-fluid" src="assets/images/events/{{event.photo}}" [alt]="event.image_alt">
+                <div class="image"> <img class="img-fluid" src="assets/images/events/{{event.photo}}"
+                        [alt]="event.image_alt">
+                    <div class="centered">
+                        <p class="month">{{event.date_time | date: 'MMM'}}</p>
+                        <p class="date">{{event.date_time | date: 'dd'}}</p>
+                        <p class="title">{{event.title}}</p>
+                    </div>
                 </div>
             </a>
         </div>

@@ -1,21 +1,27 @@
 .row {
     margin-top: 15px;
-    button{
-        margin-top: 15px;
-    }
-    .nav-tabs {
-        .nav-item {
-            width: 50%;
+}
 
-            .nav-link.active {
-                border-color: #d2381e #d2381e #fff;
-                border-width: medium;
-            }
+.row button {
+    margin-top: 15px;
+    background-color: #d2381e !important;
+}
 
-            .nav-item {
-                border-color: #d2381e;
-                border-width: medium;
-            }
-        }
-    }
+.row .nav-tabs .nav-item {
+    width: 50%;
+}
+
+.row .nav-tabs .nav-item .nav-link.active {
+    border-color: #d2381e #d2381e #fff;
+    border-width: medium;
+}
+
+.row .nav-tabs .nav-item .nav-item {
+    border-color: #d2381e;
+    border-width: medium;
+}
+
+.row .forget_pwd {
+    text-align: center;
+    margin: 10px 0px;
 }

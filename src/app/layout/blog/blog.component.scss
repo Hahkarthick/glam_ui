@@ -1,4 +1,4 @@
-.blog_posts div {
+blog_posts div {
     margin-top: 5px;
 }
 
@@ -9,7 +9,24 @@
 
 .blog_icons {
     margin-top: 20px;
+    font-size: 20px;
+    padding-left: 15%;
+    padding-right: 15%;
 }
-.blog_po_date{
+
+.blog_po_date {
     padding: 0px 50px !important;
+    font-size: small;
+}
+
+.blog_title {
+    font-size: large;
+    color: #000000;
+    font-weight: bold;
+}
+
+.fa-heart,
+.fa-commenting-o,
+.fa-users {
+    color: #d2381f;
 }

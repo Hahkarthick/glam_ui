@@ -11,11 +11,11 @@ import { ListingService } from '../../service/listing.service';
 export class BlogComponent implements OnInit, AfterViewInit {
 
     protected blogs;
-
+    private likes: any;
+    private comnts: Number;
     constructor(private renderer: Renderer2, private listing: ListingService) {
 
         this.listing.listBlog().subscribe(blogs => {
-            console.log(blogs[0].id);
             this.blogs = blogs;
         });
 
@@ -35,6 +35,16 @@ export class BlogComponent implements OnInit, AfterViewInit {
             return true;
         }
     */
+    likesCount(data){
+        this.listing.blogLikes(data).subscribe(blogLikes => {
+            return blogLikes['COUNT(*)'];
+        });
+    }
 
+    commentCount(data) {
+        this.listing.blogCommentCount(data).subscribe(commentCount => {
+            return commentCount['COUNT(*)'];
+        });
+    }
     ngOnInit() { }
 }
